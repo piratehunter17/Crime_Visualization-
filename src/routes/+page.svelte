@@ -1,17 +1,20 @@
 <script>
     import {goto} from "$app/navigation";
+    import {enhance} from "$app/forms";
+    import {userStore} from "$lib/stores/User";
+
+    let name = $userStore.name;
+    let email = $userStore.email;
 </script>
 
 <nav class="bg-blue-600 text-white p-4">
     <div class="container mx-auto">
         <div class="flex justify-between items-center">
-            <div class="text-2xl font-semibold">Cyber Crime India</div>
-            <div>
-                <button
-                    on:click={()=>goto("/register")}
-                    class="btn btn-outline btn-accent">Register</button
-                >
-            </div>
+            <div class="text-2xl font-semi-bold">Cyber Crime India</div>
+            <form action="?/logout" method="POST" use:enhance on:submit|preventDefault>
+                <button class="btn btn-outline btn-accent">LOGOUT</button>
+            </form>
+            <p>Name: {name} and Email: {email}</p>
         </div>
     </div>
 </nav>
@@ -71,7 +74,7 @@
         </div>
     </div>
 </section>
-
+<button on:click={()=>goto('/city')}>CITY PAGE</button>
 <footer class="bg-blue-600 text-white p-8">
     <div class="container mx-auto text-center">
         &copy; 2023 Cyber Crime India. All rights reserved.

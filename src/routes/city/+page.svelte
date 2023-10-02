@@ -2,6 +2,10 @@
     import { onMount } from 'svelte';
     import * as echarts from 'echarts';
     import { csv } from 'd3-fetch';
+    import {userStore} from "$lib/stores/User";
+
+    let name = $userStore.name;
+    let email = $userStore.email;
 
     let chartRef: HTMLDivElement;
     let cities: string[] = [];
@@ -10,7 +14,7 @@
     let allData: any; // Use 'any' here for simplicity
 
     onMount(async () => {
-        allData = await csv("src/lib/data/2016/Table_9B.3_2016.csv");
+        allData = await csv("/2016/Table_9B.3_2016.csv");
         if (!allData) {
             console.error("Failed to load data");
             return;

@@ -10,7 +10,7 @@
     let crimeTypeMapping: Record<string, string> = {};
 
     onMount(async () => {
-        allData = await csv("src/lib/data/2016/Table_9B.3_2016.csv");
+        allData = await csv("/2016/Table_9B.3_2016.csv");
         if (!allData) {
             console.error("Failed to load data");
             return;
